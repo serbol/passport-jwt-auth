@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passport authorization</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center mb-4">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Main</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#register">Create account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#forgot">Forgot</a>
+      </li>
+      <li class="nav-item">
+        <a id="logout" class="nav-link" href="#login">Logout</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-6">
+        <div id="login" class="card mb-4">
+          <div class="card-body">
+            <h3 class="text-center mb-4">Login</h3>
+            <form action="submit">
+              <div class="form-group d-grid gap-3">
+                <input class="form-control" type="email" name="email" placeholder="Email" />
+                <input class="form-control" type="password" name="password" autocomplete="on" placeholder="Password" />
+                <button class="btn btn-primary" type="submit">Login</button>
+                <hr />
+                <a class="btn btn-primary" href="/api/auth/google">Google</a>
+                <a class="btn btn-primary" href="/api/auth/facebook">Facebook</a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="register" class="card mb-4">
+          <div class="card-body">
+            <h3 class="text-center mb-4">Create account</h3>
+            <form action="submit">
+              <div class="form-group d-grid gap-3">
+                <input class="form-control" type="email" name="email" placeholder="Email" />
+                <input class="form-control" type="text" name="firstName" placeholder="First name" />
+                <input class="form-control" type="text" name="lastName" placeholder="Last name" />
+                <input class="form-control" type="password" name="password" autocomplete="on" placeholder="Password" />
+                <button class="btn btn-primary" type="submit">Create account</button>
+                <hr />
+                <a class="btn btn-primary" href="/api/auth/google">Google</a>
+                <a class="btn btn-primary" href="/api/auth/facebook">Facebook</a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="forgot" class="card mb-4">
+          <div class="card-body">
+            <h3 class="text-center mb-4">Forgot password</h3>
+            <form action="submit">
+              <div class="form-group d-grid gap-3">
+                <input class="form-control" type="email" name="email" placeholder="Email" />
+                <button class="btn btn-primary" type="submit">Forgot</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="reset" class="card mb-4">
+          <div class="card-body">
+            <h3 class="text-center mb-4">Reset password</h3>
+            <form action="submit">
+              <div class="form-group d-grid gap-3">
+                <input class="form-control" type="password" name="password" autocomplete="on" placeholder="New password" />
+                <input class="form-control" type="password" name="repeatPassword" autocomplete="on" placeholder="Repeat new password" />
+                <button class="btn btn-primary" type="submit">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="user-info" class="card mb-4">
+          <div class="card-body">
+            <h3 class="text-center">User information</h3>
+            <div class="data"></div>
+          </div>
+        </div>
+        <div id="users-block" class="card mb-4">
+          <div class="card-body">
+            <h3 class="text-center">All users</h3>
+            <div class="data"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="toast"></div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+.card {
+  display: none;
+}
+
+.card:target {
+  display: block;
+}
+
+#toast {
+  position: fixed;
+  bottom: 1rem;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform linear 300ms, opacity linear 300ms;
+  padding: 1rem;
+  color: var(--bs-white);
+  border-radius: 0.25rem;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  max-width: 30rem;
+}
+
+#toast.success {
+  background-color: var(--bs-success);
+}
+
+#toast.danger {
+  background-color: var(--bs-danger);
+}
+
+#toast.active {
+  transform: translateY(0);
+  opacity: 1;
+}

@@ -1,0 +1,41 @@
+{
+  "name": "passport-jwt-auth-boilerplate",
+  "version": "1.0.0",
+  "description": "Node.js authorization with passport JWT - boilerplate",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon server",
+    "start:production": "cross-env NODE_ENV=production node src/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "jwt",
+    "passport",
+    "passport-jwt"
+  ],
+  "author": "serbol",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.3.0",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.0.0",
+    "mongoose": "^5.13.3",
+    "nodemailer": "^6.6.3",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth2": "^0.2.0",
+    "passport-jwt": "^4.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "cross-env": "^7.0.3"
+  }
+}

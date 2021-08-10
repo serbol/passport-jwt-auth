@@ -1,0 +1,10 @@
+# dependencies
+/node_modules
+  
+# misc
+package-lock.json
+.DS_Store
+
+# config file
+.vscode
+.env
