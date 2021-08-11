@@ -1,9 +1,28 @@
-.card {
+#auth .card {
   display: none;
 }
 
-.card:target {
+#auth .card:target {
   display: block;
+}
+
+.data:empty::before {
+  font-size: 1.2rem;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+#user-info .data:empty ~ * {
+  display: none;
+}
+
+#user-info .data:empty::before {
+  content: 'You are not logged in. Please proceed login or create account.';
+}
+
+
+#user-list .data:empty::before {
+  content: 'You are not allowed to view other user data';
 }
 
 #toast {

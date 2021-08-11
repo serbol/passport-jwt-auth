@@ -4,8 +4,8 @@ const forgot = document.querySelector('#forgot')
 const reset = document.querySelector('#reset')
 const logout = document.querySelector('#logout')
 
-const userInfo = document.querySelector('#user-info')
-const usersList = document.querySelector('#users-block')
+const userInfo = document.querySelector('#user-info .data')
+const userList = document.querySelector('#user-list .data')
 
 const toast = document.querySelector('#toast')
 
@@ -36,18 +36,14 @@ const getUserInfoList = (user) => {
   return userDataList
 }
 
-const displayUsers = () => {
+const displayUserList = () => {
   const authorization = localStorage.getItem('token')
   fetch('/api/user/list', { headers: { 'Authorization': authorization } })
     .then(handleResponse)
     .then((response) => {
-      const usersListData = usersList.querySelector('.data')
-      usersListData.innerHTML = ''
       response.users.forEach((user) => {
-        const userInfoList = getUserInfoList(user)
-        usersListData.appendChild(userInfoList)
+        userList.innerHTML += getUserInfoList(user).outerHTML
       })
-      usersList.style.display = 'block'
     })
     .catch((error) => showMessage(error.message, 'danger'))
 }
@@ -57,16 +53,10 @@ const displayUser = () => {
   fetch('/api/user', { headers: { 'Authorization': authorization } })
     .then(handleResponse)
     .then((response) => {
-      const userInfoData = userInfo.querySelector('.data')
-      userInfoData.innerHTML = ''
-      const userInfoList = getUserInfoList(response.user)
-      userInfoData.appendChild(userInfoList)
-      if (response.user.role === 'ROLE_ADMIN') {
-        displayUsers()
-      } else {
-        usersList.style.display = ''
-      }
-      userInfo.style.display = 'block'
+      userInfo.innerHTML = getUserInfoList(response.user).outerHTML
+
+      userList.innerHTML = ''
+      if (response.user.role === 'ROLE_ADMIN') displayUserList()
     })
     .catch((error) => {
       showMessage(error.message, 'danger')
@@ -82,9 +72,7 @@ login.onsubmit = (event) => {
   fetch('/api/auth/login', {
     method: 'POST',
     body: JSON.stringify({ email, password }),
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
   })
     .then(handleResponse)
     .then((response) => {
@@ -105,9 +93,7 @@ register.onsubmit = (event) => {
   fetch('/api/auth/register', {
     method: 'POST',
     body: JSON.stringify({ email, firstName, lastName, password }),
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
   })
     .then(handleResponse)
     .then((response) => showMessage(response.message, 'success'))
@@ -121,9 +107,7 @@ forgot.onsubmit = (event) => {
   fetch('/api/auth/forgot', {
     method: 'POST',
     body: JSON.stringify({ email }),
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
   })
     .then(handleResponse)
     .then((response) => showMessage(response.message, 'success'))
@@ -139,9 +123,7 @@ reset.onsubmit = (event) => {
   fetch(`/api/auth/reset/${resetPasswordId}`, {
     method: 'POST',
     body: JSON.stringify({ password }),
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
   })
     .then(handleResponse)
     .then((response) => {
@@ -152,8 +134,8 @@ reset.onsubmit = (event) => {
 }
 
 logout.onclick = () => {
-  userInfo.style.display = ''
-  usersList.style.display = ''
+  userInfo.innerHTML = ''
+  userList.innerHTML = ''
   localStorage.removeItem('token')
 }
 
