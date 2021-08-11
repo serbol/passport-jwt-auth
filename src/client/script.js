@@ -128,7 +128,8 @@ reset.onsubmit = (event) => {
     .then(handleResponse)
     .then((response) => {
       showMessage(response.message, 'success')
-      window.location.hash = '#login'
+      window.history.replaceState({}, document.title, '/')
+      window.location.hash = 'login'
     })
     .catch((error) => showMessage(error.message, 'danger'))
 }
