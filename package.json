@@ -1,7 +1,7 @@
 {
   "name": "passport-jwt-auth-boilerplate",
   "version": "1.0.0",
-  "description": "Node.js authorization with passport JWT - boilerplate",
+  "description": "Node.js authentication with passport JWT - boilerplate",
   "main": "src/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon server"
