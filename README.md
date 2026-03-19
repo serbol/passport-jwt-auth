@@ -3,7 +3,7 @@ Basic JWT authentication REST APIs:
 * Login
 * Register
 * Forgotten password reset
-* Authorization through social networks: Google and Facebook
+* Authentication through social networks: Google and Facebook
 * Get user information
 * Get all user information based on authorized user role 
 
